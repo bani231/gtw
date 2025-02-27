@@ -1,0 +1,102 @@
+gtw-website
+    ├── index.html
+    ├── style.css
+    └── script.js<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Bucin</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Selamat Datang di Website Bucin</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Quotes Cinta</h2>
+            <p id="quote">"Cinta itu buta, tapi aku tidak!"</p>
+            <button onclick="newQuote()">Dapatkan Quote Baru</button>
+        </section>
+        <section>
+            <h2>Bagikan Cintamu</h2>
+            <textarea id="message" placeholder="Tulis pesan untuk orang tercintamu..."></textarea>
+            <button onclick="shareLove()">Bagikan</button>
+            <p id="sharedMessage"></p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Website Bucin. Semua hak dilindungi.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    background-color: #ff6f61;
+    color: white;
+    padding: 20px 0;
+}
+
+h1, h2 {
+    margin: 0;
+}
+
+section {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ff4f41;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}const quotes = [
+    "Cinta itu buta, tapi aku tidak!",
+    "Cinta sejati tidak pernah mati.",
+    "Cinta adalah kekuatan yang menggerakkan dunia.",
+    "Cinta adalah segalanya.",
+    "Cinta adalah bahasa universal."
+];
+
+function newQuote() {
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    document.getElementById("quote").innerText = quotes[randomIndex];
+}
+
+function shareLove() {
+    const message = document.getElementById("message").value;
+    if (message) {
+        document.getElementById("sharedMessage").innerText = "Pesanmu: " + message;
+        document.getElementById("message").value = ""; // Clear the textarea
+    } else {
+        alert("Tolong tulis pesan sebelum membagikannya!");
+    }
+}
